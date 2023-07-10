@@ -9,4 +9,6 @@ func Setup(r *gin.Engine) {
 
 	r.GET("/heartbeat", controllers.Heartbeat)
 
+	r.POST("/users", controllers.CreateUser)
+
 }

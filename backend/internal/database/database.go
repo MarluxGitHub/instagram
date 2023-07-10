@@ -19,14 +19,6 @@ func Connect() *gorm.DB {
 		panic ("failed to connect to Database")
 	}
 
-	defer func() {
-		dbToClose, err := db.DB()
-		if err != nil {
-			panic("failed to close database connection")
-		}
-		dbToClose.Close()
-	}()
-
 	dbInstance = db
 
 	return db

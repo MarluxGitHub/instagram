@@ -5,6 +5,7 @@ type User struct {
 	Password 	string
 	Username 	string
 	Email 		string
+	Posts 		[]Post 	`gorm:"foreignKey:UserID"`
 }
 
 func (u *User) String() string {
