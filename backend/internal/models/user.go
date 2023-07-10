@@ -1,13 +1,12 @@
 package models
 
 type User struct {
-	ID 			uint
+	ID 			uint 	`gorm:"primary_key, index, AUTO_INCREMENT"`
 	Password 	string
-	FirstName 	string
-	LastName 	string
+	Username 	string
 	Email 		string
 }
 
 func (u *User) String() string {
-	return u.FirstName + " " + u.LastName
+	return "User: " + u.Username + " " + u.Email
 }

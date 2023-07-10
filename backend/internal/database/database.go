@@ -1,7 +1,6 @@
 package database
 
 import (
-	"github.com/MarluxGitHub/instagram/internal/database/migration"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -28,7 +27,6 @@ func Connect() *gorm.DB {
 		dbToClose.Close()
 	}()
 
-	migration.Migrate(db)
 	dbInstance = db
 
 	return db

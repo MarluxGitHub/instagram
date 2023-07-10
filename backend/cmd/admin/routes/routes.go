@@ -9,7 +9,4 @@ func Setup(r *gin.Engine) {
 
 	r.GET("/heartbeat", controllers.Heartbeat)
 
-	// User routes
-	r.POST("/api/v1/user", controllers.CreateUser)
-
 }
