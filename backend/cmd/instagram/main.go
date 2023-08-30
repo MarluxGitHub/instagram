@@ -1,23 +1,21 @@
 package main
 
 import (
-	"github.com/MarluxGitHub/instagram/cmd/instagram/routes"
-	"github.com/MarluxGitHub/instagram/internal/database"
-	"github.com/MarluxGitHub/instagram/internal/database/migration"
-	"github.com/gin-gonic/gin"
+	heartbeat "github.com/MarluxGitHub/instagram/pkg/domain/heartbeat/interfaces"
+	"github.com/MarluxGitHub/instagram/pkg/lib/api/rest"
 )
 
 func main() {
-	migrateDatabase()
+	initInterfaces()
 
-	r := gin.Default()
-
-	routes.Setup(r)
-
-	r.Run() // listen and serve on
 }
 
-func migrateDatabase() {
-	db := database.Connect()
-	migration.Migrate(db)
+func initInterfaces() {
+	restApi := rest.NewRestApi()
+	restApi.Init()
+
+	heartbeat := heartbeat.NewHeartbeatRestEndpoint()
+	restApi.AddEndpoint(&heartbeat)
+
+	restApi.Start()
 }
