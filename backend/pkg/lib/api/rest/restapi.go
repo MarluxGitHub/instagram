@@ -1,10 +1,14 @@
 package rest
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+	"github.com/spf13/viper"
+)
 
 type restApi interface {
 	Init()
 	AddEndpoint(endpoint *RestEndpoint)
+	SetConfig(config *viper.Viper)
 	Start()
 }
 
@@ -12,6 +16,7 @@ type restApi interface {
 type restApiImpl struct {
     engine *gin.Engine
 	endpoints []*RestEndpoint
+	config *viper.Viper
 }
 
 func (r *restApiImpl) Init() {
@@ -31,9 +36,14 @@ func (r *restApiImpl) AddEndpoint(endpoint *RestEndpoint) {
 	r.endpoints = append(r.endpoints, endpoint)
 }
 
+func (r *restApiImpl) SetConfig(config *viper.Viper) {
+	r.config = config
+}
+
 func NewRestApi() restApi {
     return &restApiImpl{
 		engine: nil,
 		endpoints: make([]*RestEndpoint, 0),
+		config: nil,
 	}
 }
