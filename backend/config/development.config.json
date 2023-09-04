@@ -3,5 +3,14 @@
         "rest": {
             "port": 80
         }
+    },
+    "db": {
+        "mysql": {
+            "host": "localhost",
+            "port": 3306,
+            "name": "luxgame",
+            "user": "user",
+            "password": "user"
+        }
     }
 }
