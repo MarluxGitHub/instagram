@@ -42,3 +42,11 @@ func (m *UserRepository) GetFollowers() []*models.User {
 	m.DB.Find(&users)
 	return users
 }
+
+func NewUserRepository(db *gorm.DB) UserRepository {
+	db.AutoMigrate(&models.User{})
+
+	return UserRepository{
+		DB: db,
+	}
+}

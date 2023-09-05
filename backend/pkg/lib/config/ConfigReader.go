@@ -21,20 +21,21 @@ func (c *ConfigReaderImpl) SetPath(path string) {
 
 // Read ViperConfig
 func (c *ConfigReaderImpl) ReadConfig() (Configuration, error) {
-	configuration := Configuration{}
+    configuration := Configuration{}
 
-	v := viper.New()
-	v.SetConfigType("json")
-	v.SetConfigFile(c.Path)
+    v := viper.New()
+    v.SetConfigType("json")
+    v.SetConfigFile(c.Path)
 
-	if err := v.ReadInConfig(); err != nil {
+    if err := v.ReadInConfig(); err != nil {
         fmt.Printf("Error reading config file, %s", err)
+        return configuration, err
     }
 
-	err := viper.Unmarshal(&configuration)
-    if err != nil {
-        fmt.Printf("Unable to decode into Configuration, %v", err)
-	}
+    if err := v.Unmarshal(&configuration); err != nil {
+        fmt.Printf("Error unmarshalling config file, %s", err)
+        return configuration, err
+    }
 
-	return configuration, nil
+    return configuration, nil
 }

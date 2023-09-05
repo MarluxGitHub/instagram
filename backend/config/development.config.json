@@ -1,16 +1,16 @@
 {
-    "api": {
+    "Api": {
         "rest": {
             "port": 80
         }
     },
-    "db": {
-        "mysql": {
-            "host": "localhost",
-            "port": 3306,
-            "name": "luxgame",
-            "user": "user",
-            "password": "user"
+    "DB": {
+        "Mysql": {
+            "Host": "localhost",
+            "Port": 3306,
+            "Name": "luxgame",
+            "User": "user",
+            "Password": "user"
         }
     }
 }

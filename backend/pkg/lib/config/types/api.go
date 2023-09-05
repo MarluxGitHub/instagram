@@ -1,9 +1,9 @@
 package types
 
 type Api struct {
-	Rest Rest `mapstructure:"rest" json:"rest" yaml:"rest"`
+	Rest Rest
 }
 
 type Rest struct {
-	Port int `mapstructure:"port" json:"port" yaml:"port"`
+	Port int
 }

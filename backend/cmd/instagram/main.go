@@ -2,6 +2,8 @@ package main
 
 import (
 	heartbeat "github.com/MarluxGitHub/instagram/pkg/domain/heartbeat/interfaces"
+	users "github.com/MarluxGitHub/instagram/pkg/domain/user/interfaces"
+
 	"github.com/MarluxGitHub/instagram/pkg/lib/api/rest"
 	"github.com/MarluxGitHub/instagram/pkg/lib/config"
 	"github.com/MarluxGitHub/instagram/pkg/lib/db/mysql"
@@ -46,6 +48,9 @@ func initInterfaces() {
 
 	heartbeat := heartbeat.NewHeartbeatRestEndpoint()
 	restApi.AddEndpoint(&heartbeat)
+
+	user := users.NewUserEndPoint(database)
+	restApi.AddEndpoint(&user)
 
 	restApi.Start()
 }
