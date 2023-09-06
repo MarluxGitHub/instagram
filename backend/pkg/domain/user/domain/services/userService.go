@@ -10,5 +10,6 @@ type UserService interface {
 
 	GetUsers() []*models.User
 
-	GetFollowers() []*models.User
+	GetFollowers(id int) []*models.User
+	GetFollowed(id int) []*models.User
 }
