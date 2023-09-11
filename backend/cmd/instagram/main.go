@@ -2,6 +2,7 @@ package main
 
 import (
 	heartbeat "github.com/MarluxGitHub/instagram/pkg/domain/heartbeat/interfaces"
+	rss "github.com/MarluxGitHub/instagram/pkg/domain/rss/interfaces"
 	users "github.com/MarluxGitHub/instagram/pkg/domain/user/interfaces"
 
 	"github.com/MarluxGitHub/instagram/pkg/lib/api/rest"
@@ -51,6 +52,9 @@ func initInterfaces() {
 
 	user := users.NewUserEndPoint(database)
 	restApi.AddEndpoint(&user)
+
+	rss := rss.NewRssEndpoint(conf.Rss)
+	restApi.AddEndpoint(&rss)
 
 	restApi.Start()
 }

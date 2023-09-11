@@ -12,5 +12,12 @@
             "User": "user",
             "Password": "user"
         }
+    },
+    "Rss": {
+       "providers": [
+           "http://feeds.feedburner.com/ign/all",
+           "https://kotaku.com/rss",
+           "https://www.gamepro.de/rss/gpnews.rss"
+       ]
     }
 }
